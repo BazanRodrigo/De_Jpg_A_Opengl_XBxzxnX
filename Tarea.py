@@ -3,9 +3,9 @@ from pygame.locals import *
 
 def main():
     print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
-    nameImage = input('Ejemplo: cabra.jpg')
-    cabra = pygame.image.load('/',nameImage)
-    wp = pygame.image.load('/WallpaperEtiqueta.jpg')
+    nameImage = input('Ejemplo: cabra.jpg\n')
+    cabra = pygame.image.load(nameImage)
+    wp = pygame.image.load('WallpaperEtiqueta.jpg')
     pygame.init()
     pygame.display.init()
     window = pygame.display.set_mode()
