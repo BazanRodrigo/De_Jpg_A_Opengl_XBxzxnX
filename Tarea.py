@@ -25,8 +25,8 @@ def ubication(position):
 
 def main():
     print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
-    #nameImage = input('Ejemplo: cabra.jpg\n')
-    cabra = pygame.image.load('cabra.jpg')
+    nameImage = input('Ejemplo: cabra.jpg\n')
+    cabra = pygame.image.load(name)
     lines = pygame.image.load('lines.jpg')
     loop = pygame.image.load('loop.jpg')
     strip = pygame.image.load('strip.jpg')
