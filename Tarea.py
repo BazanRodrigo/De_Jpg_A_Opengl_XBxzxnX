@@ -1,16 +1,25 @@
 import pygame
-from pygame.locals import *
+
+window = pygame.display.set_mode()
+mlines = pygame.image.load('moodlines.jpg')
+mloop = pygame.image.load('moodloop.jpg')
+mpoint = pygame.image.load('moodpoint.jpg')
+mstrip = pygame.image.load('moodstrip.jpg')
 
 def ubication(position):
     if(position[0]>100 and position[0]<250):    #Lines
+        window.blit(mlines, (100,0))
         return("glBegin(GL_LINES);")
     if(position[0]>300 and position[0]<450):    #Loop
+        window.blit(mloop, (100,0))
         return("glBegin(GL_LINES_LOOP);")
-    if(position[0]>500 and position[0]<650):    #STRIP
+    if(position[0]>500 and position[0]<650):    #POINT
+        window.blit(mpoint, (100,0))
         return("glBegin(GL_LINES_POINT);")
-    if(position[0]>700 and position[0]<850):    #POINT
+    if(position[0]>700 and position[0]<850):    #STRIP
+        window.blit(mstrip, (100,0))
         return("glBegin(GL_LINES_STRIP);")
-    if(position[0]>900 and position[0]<1050):    #POINT
+    if(position[0]>900 and position[0]<1050):    #change
         return("---------------------------cambio---------------------------------")
     return ''
 
@@ -25,7 +34,6 @@ def main():
     change = pygame.image.load('cambio.jpg')
     pygame.init()
     pygame.display.init()
-    window = pygame.display.set_mode()
     window.fill((255,255,255))
     window.blit(cabra, (100,100))
     window.blit(lines, (100,800))
@@ -59,6 +67,7 @@ def main():
                 if(dy>800 and dy<900):
                     if (ubication(pygame.mouse.get_pos()))!='':
                         print(ubication(pygame.mouse.get_pos()))
+                        pygame.display.flip()
                     mood = False
                 else:
                     print('glVertex2i(',x,',',y,');')
