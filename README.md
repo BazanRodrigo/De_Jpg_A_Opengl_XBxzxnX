@@ -1,5 +1,6 @@
-#De_Jpg_A_Opengl_XBxzxnX
-##Manual de uso 📋
+## De_Jpg_A_Opengl_XBxzxnX
+
+## Manual de uso 📋
 1.- Primero verifica que tengas instalado python. (Buscas en el menu inicio “IDLE Python”). La versión no es importante, pero de igual manera busca que sea la más actual para evitar posibles conflictos en la ejecución.
 
 2.- Instala pygame; lo puedes hacer escribiendo “pip install pygame” en la consola de comandos a la cual puedes acceder con la tecla windows + R y escribiendo CMD. una vez en la consola escribe el comando “pip install pygame”.
