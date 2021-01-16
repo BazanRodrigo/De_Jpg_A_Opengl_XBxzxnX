@@ -12,13 +12,13 @@ def ubication(position):
         return("glBegin(GL_LINES);")
     if(position[0]>300 and position[0]<450):    #Loop
         window.blit(mloop, (100,0))
-        return("glBegin(GL_LINES_LOOP);")
+        return("glBegin(GL_LINE_LOOP);")
     if(position[0]>500 and position[0]<650):    #POINT
         window.blit(mpoint, (100,0))
-        return("glBegin(GL_LINES_POINT);")
+        return("glBegin(GL_LINE_POINT);")
     if(position[0]>700 and position[0]<850):    #STRIP
         window.blit(mstrip, (100,0))
-        return("glBegin(GL_LINES_STRIP);")
+        return("glBegin(GL_LINE_STRIP);")
     if(position[0]>900 and position[0]<1050):    #change
         return("---------------------------cambio---------------------------------")
     return ''
@@ -26,7 +26,7 @@ def ubication(position):
 def main():
     print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
     nameImage = input('Ejemplo: cabra.jpg\n')
-    cabra = pygame.image.load(name)
+    cabra = pygame.image.load(nameImage)
     lines = pygame.image.load('lines.jpg')
     loop = pygame.image.load('loop.jpg')
     strip = pygame.image.load('strip.jpg')
