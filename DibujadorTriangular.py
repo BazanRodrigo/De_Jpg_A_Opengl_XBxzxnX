@@ -1,8 +1,8 @@
 import pygame
 
-#print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
-#nameImage = input('Ejemplo: cabra.jpg\n')
-imagen = pygame.image.load('cabra.jpg')
+print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
+nameImage = input('Ejemplo: cabra.jpg\n')
+imagen = pygame.image.load(nameImage)
 window = pygame.display.set_mode()
 mtriangulo = pygame.image.load('simple.png')
 mstrip = pygame.image.load('strip.png')
@@ -21,13 +21,13 @@ fan = False
 def mood(position):
     if position[0]>100 and position[0]<250:    #simple
         window.blit(lsimple, (100,0))
-        return("glBegin(GL_LINES);")
+        return("glBegin(GL_TRIANGLES);")
     if(position[0]>300 and position[0]<450):    #strip
         window.blit(lstrip, (100,0))
-        return("glBegin(GL_LINE_LOOP);")
+        return("glBegin(GL_TRIANGLE_STRIP);")
     if(position[0]>500 and position[0]<650):    #fan
         window.blit(lfan, (100,0))
-        return("glBegin(GL_LINE_POINT);")
+        return("glBegin(GL_TRIANGLE_FAN);")
     if(position[0]>700 and position[0]<850):    #change
         return("//---------------------------cambio---------------------------------")
     return ''
@@ -36,7 +36,7 @@ def main():
     pygame.init()
     pygame.display.init()
     window.fill((25, 35, 49))
-    #window.blit(imagen, (100,100))
+    window.blit(imagen, (100,100))
     window.blit(mtriangulo, (100,800))
     window.blit(mstrip, (300,800))
     window.blit(mfan, (500,800))
@@ -60,7 +60,8 @@ def main():
                         nclics = 0
                         puntos = 0
                         window.blit(lsimple, (100,0))
-                        print("glBegin(GL_LINES);")
+                        print("glEnd();")
+                        print("glBegin(GL_TRIANGLES);")
                         simple = True
                         strips = False
                         fan = False
@@ -69,7 +70,8 @@ def main():
                         nclics = 0
                         puntos = 0
                         window.blit(lstrip, (100,0))
-                        print("glBegin(GL_LINE_LOOP);")
+                        print("glEnd();")
+                        print("glBegin(GL_TRIANGLE_STRIP);")
                         simple = False
                         strips = True
                         fan = False
@@ -78,7 +80,8 @@ def main():
                         nclics = 0
                         puntos = 0
                         window.blit(lfan, (100,0))
-                        print("glBegin(GL_LINE_POINT);")
+                        print("glEnd();")
+                        print("glBegin(GL_TRIANGLE_FAN);")
                         simple = False
                         strips = False
                         fan = True
@@ -86,7 +89,7 @@ def main():
                     if(position[0]>700 and position[0]<850):    #change
                         print("//---------------------------cambio---------------------------------")
                         continue
-                print('glVertex2i(',x,',',y,');')
+                print('    glVertex2i(',x,',',y,');')
                 listaclics[nclics] = pygame.mouse.get_pos()
                 nclics = nclics + 1
                 puntos = puntos + 1
@@ -97,6 +100,11 @@ def main():
                 if fan:
                     trianguloFan(listaclics, nclics)
             pygame.display.flip()
+    print("glEnd();")
+    print('\n\n\n\nPorfa sigueme en mis redes sociales pq tengo poquitos seguidores')
+    print('twitter: @BazanZuritaRodr')
+    print('Instagram: zur1t4')
+    print('Github: BazanRodrigo')
 
 def trianguloSimple(listaclics, n, puntos):
     pygame.draw.line(window, lineacolor, listaclics[n-3], listaclics[n-1],grosor)
