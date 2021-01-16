@@ -1,48 +1,88 @@
 import pygame
 
+#print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
+#nameImage = input('Ejemplo: cabra.jpg\n')
+#imagen = pygame.image.load(nameImage)
 window = pygame.display.set_mode()
-mlines = pygame.image.load('moodlines.jpg')
-mloop = pygame.image.load('moodloop.jpg')
-mpoint = pygame.image.load('moodpoint.jpg')
-mstrip = pygame.image.load('moodstrip.jpg')
+mtriangulo = pygame.image.load('simple.png')
+mstrip = pygame.image.load('strip.png')
+mfan = pygame.image.load('fan.png')
+lsimple = pygame.image.load('msimple.png')
+lstrip = pygame.image.load('mstrip.png')
+lfan = pygame.image.load('mfan.png')
+change = pygame.image.load('cambio.jpg')
 lineacolor = pygame.Color(52, 108, 117)
 ultimacolor = pygame.Color(183, 221, 204)
 grosor = 5
+simple = False
+strips = False
+fan = False
 
-def ubication(position):
-    if(position[0]>100 and position[0]<250):    #Lines
-        window.blit(mlines, (100,0))
+def mood(position):
+    if position[0]>100 and position[0]<250:    #simple
+        window.blit(lsimple, (100,0))
         return("glBegin(GL_LINES);")
-    if(position[0]>300 and position[0]<450):    #Loop
-        window.blit(mloop, (100,0))
+    if(position[0]>300 and position[0]<450):    #strip
+        window.blit(lstrip, (100,0))
         return("glBegin(GL_LINE_LOOP);")
-    if(position[0]>500 and position[0]<650):    #POINT
-        window.blit(mpoint, (100,0))
+    if(position[0]>500 and position[0]<650):    #fan
+        window.blit(lfan, (100,0))
         return("glBegin(GL_LINE_POINT);")
-    if(position[0]>700 and position[0]<850):    #STRIP
-        window.blit(mstrip, (100,0))
-        return("glBegin(GL_LINE_STRIP);")
-    if(position[0]>900 and position[0]<1050):    #change
-        return("---------------------------cambio---------------------------------")
+    if(position[0]>700 and position[0]<850):    #change
+        return("//---------------------------cambio---------------------------------")
     return ''
 
 def main():
     pygame.init()
     pygame.display.init()
     window.fill((25, 35, 49))
+    #window.blit(imagen, (100,100))
+    window.blit(mtriangulo, (100,800))
+    window.blit(mstrip, (300,800))
+    window.blit(mfan, (500,800))
+    window.blit(change, (700,800))
     running = True
     listaclics = [0,0] * 512
     nclics = 0
     puntos = 0
-    simple = False
-    strips = True
-    fan = False
     while running:
         # Did the user click the window close button?
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                position = pygame.mouse.get_pos()
+                if(position[1]>800 and position[1]<900):
+                    if position[0]>100 and position[0]<250:    #simple
+                        nclics = 0
+                        puntos = 0
+                        window.blit(lsimple, (100,0))
+                        print("glBegin(GL_LINES);")
+                        simple = True
+                        strips = False
+                        fan = False
+                        continue
+                    if(position[0]>300 and position[0]<450):    #strip
+                        nclics = 0
+                        puntos = 0
+                        window.blit(lstrip, (100,0))
+                        print("glBegin(GL_LINE_LOOP);")
+                        simple = False
+                        strips = True
+                        fan = False
+                        continue
+                    if(position[0]>500 and position[0]<650):    #fan
+                        nclics = 0
+                        puntos = 0
+                        window.blit(lfan, (100,0))
+                        print("glBegin(GL_LINE_POINT);")
+                        simple = False
+                        strips = False
+                        fan = True
+                        continue
+                    if(position[0]>700 and position[0]<850):    #change
+                        print("//---------------------------cambio---------------------------------")
+                        continue
                 listaclics[nclics] = pygame.mouse.get_pos()
                 nclics = nclics + 1
                 puntos = puntos + 1
@@ -52,12 +92,7 @@ def main():
                     trianguloStrips(listaclics, nclics)
                 if fan:
                     trianguloFan(listaclics, nclics)
-
-
-
             pygame.display.flip()
-    print(nclics)
-    print(listaclics)
 
 def trianguloSimple(listaclics, n, puntos):
     pygame.draw.line(window, lineacolor, listaclics[n-3], listaclics[n-1],grosor)
