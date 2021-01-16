@@ -2,7 +2,7 @@ import pygame
 
 #print('Ingresa el nombre de tu imagen que esta en la carpteta Raiz con extension')
 #nameImage = input('Ejemplo: cabra.jpg\n')
-#imagen = pygame.image.load(nameImage)
+imagen = pygame.image.load('cabra.jpg')
 window = pygame.display.set_mode()
 mtriangulo = pygame.image.load('simple.png')
 mstrip = pygame.image.load('strip.png')
@@ -43,6 +43,7 @@ def main():
     window.blit(change, (700,800))
     running = True
     listaclics = [0,0] * 512
+    height = imagen.get_height()
     nclics = 0
     puntos = 0
     while running:
@@ -52,6 +53,8 @@ def main():
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 position = pygame.mouse.get_pos()
+                x = (position[0]-100)
+                y = height-(position[1]-100)
                 if(position[1]>800 and position[1]<900):
                     if position[0]>100 and position[0]<250:    #simple
                         nclics = 0
@@ -83,6 +86,7 @@ def main():
                     if(position[0]>700 and position[0]<850):    #change
                         print("//---------------------------cambio---------------------------------")
                         continue
+                print('glVertex2i(',x,',',y,');')
                 listaclics[nclics] = pygame.mouse.get_pos()
                 nclics = nclics + 1
                 puntos = puntos + 1
