@@ -37,10 +37,10 @@ def main():
     pygame.display.init()
     window.fill((25, 35, 49))
     window.blit(imagen, (100,100))
-    window.blit(mtriangulo, (100,800))
-    window.blit(mstrip, (300,800))
-    window.blit(mfan, (500,800))
-    window.blit(change, (700,800))
+    window.blit(mtriangulo, (100,650))
+    window.blit(mstrip, (300,650))
+    window.blit(mfan, (500,650))
+    window.blit(change, (700,650))
     running = True
     listaclics = [0,0] * 512
     height = imagen.get_height()
@@ -55,7 +55,7 @@ def main():
                 position = pygame.mouse.get_pos()
                 x = (position[0]-100)
                 y = height-(position[1]-100)
-                if(position[1]>800 and position[1]<900):
+                if(position[1]>650 and position[1]<750):
                     if position[0]>100 and position[0]<250:    #simple
                         nclics = 0
                         puntos = 0
