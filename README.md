@@ -47,4 +47,22 @@ Atte:Rodrigo Bazán Zurita
 
 Alias: Bazán 
 
+## Generador de figuras en 3d 
 
+Lo necesario para poder generar un modelo de una figura 3d es la perspectiva de una figura de frente y de perfil. 
+
+1.- Selecciona el archivo 2dto3d.py, presiona clic secundario sobre él y busca la opción “Abrir con” o “Ejecutar con IDLE Python”. Si no encuentras la opción ejecuta desde el menu inicio la busqueda de IDLE Python, ejecutalo y en la opción FIlE, carga el archivo DibujadorTriangular.py
+
+2.- En la línea 5 y 6 es necesario escribir el nombre de tus imagnes de perfil y de frente respectivamente.
+
+3.- La manera de usar el Hack es con simple clics, primeramente eliges el tipo de triangulo que vas a dibujar si quieres un triangulo de tipo simple, presiona la tecla T, si quieres un triangulo de tipo strip, presiona S, y si deseas un triangulo de forma Fan, presiona la tecla f, si deseas introducir una línea de cambio, presiona c y se agregara a la consola una línea; das clic en el inicio del triangulo que está en tu imagen y deseas duplicar, después das clic en el la altura de la imagen del lado derecho en donde quieras colocar el eje Z, es decir, das un clic en la imagen del lado izquierdo y otro clic en la imagen del lado derecho y de inmediato se van a generar una linea de código con 3 coordenadas x, y, z.
+
+4.- En la consola del código, el mismo lugar donde introdujiste el nombre de tu imagen, cada que dibujes la línea se imprimirá el código que debes copiar y pegar en la función “paint”.
+
+Cualquier duda puedes buscarme en mis redes sociales las cuales salen al finalizar el Hack.
+
+Éxito y que la fuerza de la programación este contigo.
+
+Atte:Rodrigo Bazán Zurita
+
+Alias: Bazán 
