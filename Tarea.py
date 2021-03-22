@@ -20,7 +20,7 @@ def ubication(position):
         window.blit(mstrip, (100,0))
         return("glBegin(GL_LINE_STRIP);")
     if(position[0]>900 and position[0]<1050):    #change
-        return("---------------------------cambio---------------------------------")
+        return("//---------------------------cambio---------------------------------")
     return ''
 
 def main():
@@ -35,8 +35,8 @@ def main():
     change = pygame.image.load('cambio.jpg')
     height = image.get_height()
     width = image.get_width()    
-    width = int(width*(0.43))
-    cabra = pygame.transform.scale(image,(600,width))
+    #width = int(width*(0.43))
+    #cabra = pygame.transform.scale(image,(600,width))
     pygame.init()
     pygame.display.init()
     window.fill((199, 0, 57 ))

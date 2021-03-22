@@ -11,9 +11,9 @@ lsimple = pygame.image.load('msimple.png')
 lstrip = pygame.image.load('mstrip.png')
 lfan = pygame.image.load('mfan.png')
 change = pygame.image.load('cambio.jpg')
-lineacolor = pygame.Color(52, 108, 117)
+lineacolor = pygame.Color(255, 0, 0)
 ultimacolor = pygame.Color(183, 221, 204)
-grosor = 5
+grosor = 1
 simple = False
 strips = False
 fan = False
@@ -21,13 +21,13 @@ fan = False
 def mood(position):
     if position[0]>100 and position[0]<250:    #simple
         window.blit(lsimple, (100,0))
-        return("glBegin(GL_TRIANGLES);")
+        return("glBegin(GL_TRIANGLES)\nglColor3f(t(),t(),t());")
     if(position[0]>300 and position[0]<450):    #strip
         window.blit(lstrip, (100,0))
-        return("glBegin(GL_TRIANGLE_STRIP);")
+        return("glBegin(GL_TRIANGLE_STRIP)\nglColor3f(t(),t(),t());")
     if(position[0]>500 and position[0]<650):    #fan
         window.blit(lfan, (100,0))
-        return("glBegin(GL_TRIANGLE_FAN);")
+        return("glBegin(GL_TRIANGLE_FAN);\nglColor3f(t(),t(),t());")
     if(position[0]>700 and position[0]<850):    #change
         return("//---------------------------cambio---------------------------------")
     return ''
@@ -37,10 +37,10 @@ def main():
     pygame.display.init()
     window.fill((25, 35, 49))
     window.blit(imagen, (100,100))
-    window.blit(mtriangulo, (100,650))
-    window.blit(mstrip, (300,650))
-    window.blit(mfan, (500,650))
-    window.blit(change, (700,650))
+    window.blit(mtriangulo, (100,900))
+    window.blit(mstrip, (300,900))
+    window.blit(mfan, (500,900))
+    window.blit(change, (700,900))
     running = True
     listaclics = [0,0] * 512
     height = imagen.get_height()
@@ -55,7 +55,7 @@ def main():
                 position = pygame.mouse.get_pos()
                 x = (position[0]-100)
                 y = height-(position[1]-100)
-                if(position[1]>650 and position[1]<750):
+                if(position[1]>900 and position[1]<1000):
                     if position[0]>100 and position[0]<250:    #simple
                         nclics = 0
                         puntos = 0
@@ -120,7 +120,6 @@ def trianguloStrips(listaclics, n):
         pygame.draw.line(window, lineacolor, listaclics[n-3], listaclics[n-1],grosor)
         pygame.draw.line(window, ultimacolor, listaclics[n-1], listaclics[n-2],grosor)
         pygame.draw.line(window, lineacolor, listaclics[n-2], listaclics[n-3],grosor)
-
 
 def trianguloFan(listaclics, n):
     if n > 2 :
